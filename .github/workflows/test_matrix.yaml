@@ -1,4 +1,4 @@
-name: "Testing matrix"
+name: Testing Matrix
 
 on:
   push:
@@ -6,14 +6,14 @@ on:
   pull_request:
 
 jobs:
-  test-python-matrix:
-    name: "Test Python matrix ${{ matrix.python-version}}"
+  test-across-python:
+    name: Test on Python ${{matrix.python-version}}
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.9, 3.10, 3.11]
+        python-version: [3.9, 3.11]
 
     steps:
       - name: Checkout code
@@ -27,5 +27,5 @@ jobs:
       - name: Install dependencies
         run: pip install pytest
 
-      - name: Run test
+      - name: Run tests
         run: python -m pytest day1/test_hello.py

@@ -34,4 +34,4 @@ jobs:
         run: python -m pytest day1/test_hello.py
 
       - name: Print Greetings
-        run: echo ${{GREETING}}
+        run: echo ${{env.GREETING}}

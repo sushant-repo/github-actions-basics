@@ -8,12 +8,15 @@ on:
 jobs:
   test-across-python:
     name: Test on Python ${{matrix.python-version}}
+    env:
+      GREETING: ${{matrix.greetings}}
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
         python-version: [3.9, 3.11]
+        greetings: ["Hello from 3.9", "Hello from 3.11"]
 
     steps:
       - name: Checkout code
@@ -29,3 +32,6 @@ jobs:
 
       - name: Run tests
         run: python -m pytest day1/test_hello.py
+
+      - name: Print Greetings
+        run: echo ${{GREETING}}

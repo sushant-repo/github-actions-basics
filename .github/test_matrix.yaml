@@ -1,0 +1,30 @@
+name: Testing Matrix
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test-across-python:
+    name: Test on Python ${{matrix.python-version}}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix: python-version:[3.9, 3.10, 3.11]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup python ${{matrix.python-version}}
+        uses: actions/setup-python@v4
+        with:
+          python-version: $(matrix.python-version)
+
+      - name: Install dependencies
+        run: pip install pytest
+
+      - name: Run tests
+        run: python -m pytest day1/test_hello.py

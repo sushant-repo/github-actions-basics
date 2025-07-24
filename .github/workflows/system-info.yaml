@@ -1,0 +1,29 @@
+name: Print system info
+
+on:
+  workflow_dispatch:
+
+jobs:
+  env_check:
+    name: Print environment info
+    runs-on: ubuntu-latest
+
+    env:
+      LANGUAGE: "Python"
+      GREETING: "Hello, CI/CD World"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Print system info
+        run: |
+          echo "Current USER: $USER"
+          echo "Home directory: $HOME"
+          echo "OS Info:"
+          uname -a
+
+      - name: Print environment variables
+        run: |
+          echo "$GREETING"
+          echo "I am learning $LANGUAGE today"

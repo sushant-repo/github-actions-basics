@@ -126,11 +126,11 @@ github-actions-basics/
 ├── day1/
 │   ├── hello.py
 │   ├── test_hello.py
-│   ├── DAY1-LEARNING.md
+│   ├── DAY1_LEARNING.md
 │   ├── README.md
 │   └── .github/workflows/
 │       ├── hello.yml
-│       └── system-info.yml
+│       └── system_info.yml
 ├── .github/workflows/
 │   └── hello.yml (active workflow for CI)
 ```

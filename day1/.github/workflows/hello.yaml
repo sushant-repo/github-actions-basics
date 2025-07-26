@@ -14,4 +14,4 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run python Code
-        run: python day1/hello.py
+        run: python scripts/hello.py

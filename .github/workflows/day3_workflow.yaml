@@ -40,7 +40,7 @@ jobs:
       - name: "Packaging artifacts"
         run: |
           mkdir -p dist
-          zip dist/my_app.zip *.py
+          zip dist/my_app.zip day3/*.py
 
       - name: "Uploading artifacts"
         if: ${{success()}}

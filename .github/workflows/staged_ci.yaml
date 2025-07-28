@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: ../.github/actions/setup-python-environment
+      - uses: ./.github/actions/setup-python-environment
         with:
           python-version: "3.11"
       - name: Install flake8
@@ -31,7 +31,7 @@ jobs:
         python-version: ["3.8", "3.12"]
 
     steps:
-      - uses: ../.github/actions/setup-python-environment
+      - uses: ./.github/actions/setup-python-environment
         with:
           python-version: ${{matrix.python-version}}
       - name: Testing Code
@@ -43,7 +43,7 @@ jobs:
     if: ${{ success() }}
 
     steps:
-      - uses: ../.github/actions/setup-python-environment
+      - uses: ./.github/actions/setup-python-environment
         with:
           python-version: "3.11"
       - name: "Packaging artifacts"
@@ -61,7 +61,7 @@ jobs:
     if: ${{ success() }}
 
     steps:
-      - uses: ../.github/actions/setup-python-environment
+      - uses: ./.github/actions/setup-python-environment
         with:
           python-version: "3.11"
       - name: "Download artifacts"

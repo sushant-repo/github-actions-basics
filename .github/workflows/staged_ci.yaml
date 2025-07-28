@@ -19,7 +19,7 @@ jobs:
       - name: Install flake8
         run: pip install flake8
       - name: Linting with flake8
-        run: flake8 app/
+        run: flake8 scripts/
         continue-on-error: false
 
   test:

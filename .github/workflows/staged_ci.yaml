@@ -12,13 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-python-environment
         with:
           python-version: "3.11"
       - name: Install flake8
         run: pip install flake8
       - name: Linting with flake8
-        run: flake8 app/
+        run: flake8 scripts/
         continue-on-error: false
 
   test:
@@ -31,6 +32,7 @@ jobs:
         python-version: ["3.8", "3.12"]
 
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-python-environment
         with:
           python-version: ${{matrix.python-version}}
@@ -43,6 +45,7 @@ jobs:
     if: ${{ success() }}
 
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-python-environment
         with:
           python-version: "3.11"
@@ -61,6 +64,7 @@ jobs:
     if: ${{ success() }}
 
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-python-environment
         with:
           python-version: "3.11"

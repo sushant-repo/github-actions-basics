@@ -41,6 +41,9 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           # ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
+      - name: Add temporary index.html
+        run: echo "<h1>Hello from CI/CD</h1>" > index.html
+
       - name: Deploy via SCP
         run: |
           scp index.html ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/html/

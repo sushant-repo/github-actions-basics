@@ -15,6 +15,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: 🐛 Debug SSH Setup
+        run: |
+          mkdir -p ~/.ssh
+
+          # Save private key
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          echo "✅ Private key saved"
+
+          # Show key file info
+          file ~/.ssh/id_rsa || echo "❌ id_rsa file missing or invalid"
+
+          # Try keyscan
+          echo "🔍 Trying ssh-keyscan to ${{ secrets.SERVER_HOST }}"
+          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts || echo "❌ ssh-keyscan failed"
+
+          echo "🔐 SSH config complete"
+
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh

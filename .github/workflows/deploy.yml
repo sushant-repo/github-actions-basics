@@ -44,4 +44,4 @@ jobs:
       - name: Simulate deployment
         run: |
           echo "Deploying index.html to ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/html/"
-          # Simulated: scp index.html ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HO
+          # Simulated: scp index.html ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/html/
